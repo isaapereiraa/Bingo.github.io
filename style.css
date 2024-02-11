@@ -1,0 +1,113 @@
+html {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Sans Display', sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #424769;
+}
+
+header {
+    background-color: #2d3250;
+    color: #e99e75;
+    padding: 1rem 1rem;
+}
+
+header h1 {
+    font-size: 4rem;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    padding: 4rem;
+}
+
+form h3, h4 {
+    color: #ffffff;
+}
+
+form input {
+    border-radius: 4px;
+    height: 40px;
+    width: 200px;
+    background-color: #161826a7;
+    color: #ffffff;
+    border-width: 0cap;
+    padding-left: 1rem;
+}
+
+form select {
+    background-color: hsl(21, 73%, 69%);
+    color: #161826;
+    cursor: pointer;
+    
+}
+
+form button {
+    border-radius: 4px;
+    height: 40px;
+    width: 150px;
+    background-color: #00000073;
+    color: #161826;
+    border-width: 0cap;
+
+}
+
+table {
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 4rem;
+    border: 8px dotted #fbff00;
+    color: #ffffff;
+    padding: 1rem;
+    width: 90%; 
+    table-layout: auto;
+    overflow: auto;  
+}
+
+table td, th {
+    width: 50px; 
+    height: 50px;
+}
+
+footer {
+    background-color: #161826;
+    color: white;
+    padding: 1rem;
+}
+
+.carton-bingo {
+    font-family: "Arial Black", Gadget, sans-serif;
+    color: #948473;
+    border: 10px solid #948473;
+    background-color: #FFE3C6;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+    margin-bottom: 20px;
+    max-width: 100%; 
+    overflow: auto; 
+    animation: entrada 2s ease 0s 1 normal forwards;
+}
+
+.numero-bingo {
+    border: 10px solid #948473;
+    padding: 10px 0px;
+}
+
+@keyframes entrada {
+	0% {
+		transform: scale(0.5);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+  

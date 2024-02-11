@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>BINGO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&family=Noto+Sans+Display:wght@200;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>B I N G O</h1>
+    </header>
+    
+    <!-- Formulario para ingresar los nombres de los jugadores -->
+    <form id="formularioJugadores">
+        <h3>Ingresa el nombre de los jugadores</h3>
+        <input type="text" id="jugador1" name="jugador1" placeholder="Jugador 1">
+        <br><br>
+        <input type="text" id="jugador2" name="jugador2" placeholder="Jugador 2">
+        <br><br>
+        <input type="text" id="jugador3" name="jugador3" placeholder="Jugador 3">
+        <br><br>
+        <input type="text" id="jugador4" name="jugador4" placeholder="Jugador 4">
+        <br><br>
+        <h4>Selecciona el tamaño del cartón</h4>
+        <select name="dimCarton" id="dimCarton">
+            <option value="3x3">3x3</option>
+            <option value="4x4">4x4</option>
+            <option value="5x5">5x5</option>
+        </select>
+        <br><br>
+        <button id="BotonInicio" type="button">Iniciar Partida</button>
+    </form>
+
+    <!-- Tabla de puntuaciones -->
+    <table id="tablaPuntuaciones">
+        <tr>
+            <th>Victorias</th>
+            <th>Jugador</th>
+            <th>Puntos totales</th>
+        </tr>
+        <!-- Las filas de la tabla se llenarán dinámicamente con JavaScript -->
+    </table>
+
+    <!-- Tableros de juego para cada jugador -->
+    <div id="tableroJugador1" class="tablero"></div>
+    <div id="tableroJugador2" class="tablero"></div>
+    <div id="tableroJugador3" class="tablero"></div>
+    <div id="tableroJugador4" class="tablero"></div>
+
+    <!-- Puntajes de los jugadores -->
+    <!-- <div id="puntajes">
+        <h2>Puntajes</h2>
+        <p id="puntajeJugador1"></p>
+        <p id="puntajeJugador2"></p>
+        <p id="puntajeJugador3"></p>
+        <p id="puntajeJugador4"></p>
+    </div> -->
+
+
+    <!-- <div id="numerosLlamados"></div>
+    <button id="siguienteNumero">Nuevo numero</button> -->
+
+    <footer>
+       <h6>Copyright 2024</h6> 
+    </footer>
+
+    <!-- Conecta al archivo de JavaScript -->
+    <script src="bingo.js"></script>
+</body>
+</html>
