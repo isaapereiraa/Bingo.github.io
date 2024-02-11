@@ -3,6 +3,11 @@ html {
     font-family: 'Noto Sans Display', sans-serif;
 }
 
+script {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Noto Sans Display', sans-serif;
+}
+
 body {
     margin: 0;
     background-color: #424769;
@@ -38,10 +43,15 @@ form input {
     padding-left: 1rem;
 }
 
-form select {
+select {
+    border-radius: 4px;
+    height: 40px;
+    width: 100px;
     background-color: hsl(21, 73%, 69%);
     color: #161826;
     cursor: pointer;
+    border-width: 0cap;
+    text-align: center;
     
 }
 
@@ -80,6 +90,15 @@ footer {
     padding: 1rem;
 }
 
+
+.nombre-jugador {
+    font-size: 24px; /* Cambia el tamaño de la fuente a 24px */
+    font-weight: bold; /* Hace que el texto sea negrita */
+    color: #e99e75; /* Cambia el color del texto a rojo */
+    text-align: center;
+}
+  
+
 .carton-bingo {
     font-family: "Arial Black", Gadget, sans-serif;
     color: #948473;
@@ -110,4 +129,17 @@ footer {
 		transform: scale(1);
 	}
 }
-  
+
+.info-ronda {
+    color: #e99e75;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mensaje-final {
+    
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
