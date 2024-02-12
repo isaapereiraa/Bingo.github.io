@@ -52,6 +52,9 @@ select {
     cursor: pointer;
     border-width: 0cap;
     text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     
 }
 
@@ -136,10 +139,37 @@ footer {
     text-align: center;
 }
 
+.puntajes {
+    color: #e99e75;
+    font-weight: bold;
+    text-align: center;
+}
+
 .mensaje-final {
     
-    color: rgb(0, 0, 0);
+    color: wheat;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+}
+
+/* .contenedor {
+    display: flex;
+    justify-content: center;
+} */
+
+
+button  {
+    border-radius: 4px;
+    height: 40px;
+    width: 100px;
+    background-color: hsl(21, 73%, 69%);
+    color: #161826;
+    cursor: pointer;
+    border-width: 0cap;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
 }

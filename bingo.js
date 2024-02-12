@@ -29,12 +29,12 @@ jugador4.addEventListener("input", comprobarCampos);
 // Función para convertir un cartón de bingo en una tabla HTML
 function cartonATabla(carton) {
     let tabla = document.createElement("table");
-    tabla.className = "carton-bingo"; // Asigna la clase "carton-bingo" a la tabla
+    tabla.className = "carton-bingo"; 
     for (let i = 0; i < carton.length; i++) {
         let fila = document.createElement("tr");
         for (let j = 0; j < carton[i].length; j++) {
             let celda = document.createElement("td");
-            celda.className = "numero-bingo"; // Asigna la clase "numero-bingo" a la celda
+            celda.className = "numero-bingo"; 
             celda.textContent = carton[i][j];
             fila.appendChild(celda);
         }
@@ -48,6 +48,54 @@ let indiceJugador = 0;
 let cartonesJugadores;
 let nombresJugadores = [jugador1, jugador2, jugador3, jugador4];
 let contadorRondas = 0;
+let puntajesJugadores = [0, 0, 0, 0];
+let lineaEncontrada = false;
+
+// Función para verificar el estado del cartón y actualizar el puntaje
+function verificarCarton(carton, puntaje) {
+    let tamaño = carton.length;
+    let puntos = 0;
+
+    // Verificar líneas horizontales
+    for (let i = 0; i < tamaño; i++) {
+        if (carton[i].every(num => num === "X")) {
+            puntos += 1;
+            lineaEncontrada = true;
+            break;
+        }
+    }
+
+    // Verificar líneas verticales
+    if (!lineaEncontrada) {
+        for (let i = 0; i < tamaño; i++) {
+            if (carton.every(fila => fila[i] === "X")) {
+                puntos += 1;
+                lineaEncontrada = true;
+                break;
+            }
+        }
+    }
+
+     // Verificar líneas diagonales
+     if (!lineaEncontrada && carton.every((fila, i) => fila[i] === "X")) {
+        puntos += 3; 
+        lineaEncontrada = true;
+    }
+    if (!lineaEncontrada && carton.every((fila, i) => fila[tamaño - i - 1] === "X")) {
+        puntos += 3; 
+        lineaEncontrada = true;
+    }
+
+    // Verificar cartón lleno
+    if (carton.every(fila => fila.every(num => num === "X"))) {
+        puntos += 5; 
+        lineaEncontrada = true;
+    }
+
+    return puntaje + puntos;
+}
+
+
 
 // Función para crear un cartón de bingo
 function crearCartonBingo(tamaño) {
@@ -93,16 +141,31 @@ function mostrarCartonJugador(indice) {
     let tabla = cartonATabla(carton);
     document.body.appendChild(tabla);
 
+    // Botón para volver al menú inicial
+    let botonMenu = document.createElement("button");
+    botonMenu.textContent = "Volver al menú";
+    botonMenu.style.backgroundColor = "hsl(21, 73%, 69%)";
+    botonMenu.style.cursor = "pointer";
+    botonMenu.addEventListener("click", function() {
+        location.reload();
+    });
+
+    document.body.appendChild(botonMenu);
     // Botón para generar un número aleatorio
     let botonGenerar = document.createElement("button");
     botonGenerar.textContent = "Generar número";
+    botonGenerar.style.backgroundColor = "hsl(21, 73%, 69%)";
+    botonGenerar.style.cursor = "pointer";
     document.body.appendChild(botonGenerar);
 
     // Crear elementos para mostrar información de la ronda
     let infoRonda = document.createElement("p");
-    infoRonda.className = "info-ronda"; // Asigna la clase "info-ronda"
-    let mensajeFinal = document.createElement("p");
-    mensajeFinal.className = "mensaje-final"; // Asigna la clase "mensaje-final"
+    infoRonda.className = "info-ronda";
+    let puntajes = document.createElement("p");
+    puntajes.className = "puntajes";
+    puntajes.innerHTML = "Puntajes: " + nombresJugadores.map((nombre, i) => `${nombre.value}: ${puntajesJugadores[i]}`).join(", ");
+    document.body.appendChild(infoRonda);
+    document.body.appendChild(puntajes);
 
     botonGenerar.addEventListener("click", function() {
         if (contadorRondas < 25) {
@@ -127,33 +190,44 @@ function mostrarCartonJugador(indice) {
                             }
                         }
                     }
+
+                    // Verificar el cartón y actualizar el puntaje
+                    puntajesJugadores[i] = verificarCarton(cartonesJugadores[i], puntajesJugadores[i]);
                 }
                 mostrarCartonJugador(indiceJugador);
                 document.body.appendChild(infoRonda);
             }
         } else {
-            mensajeFinal.textContent = "Fin del juego!";
-            document.body.appendChild(mensajeFinal); 
+            let maxPuntaje = Math.max(...puntajesJugadores);
+            let ganadores = nombresJugadores.filter((_, i) => puntajesJugadores[i] === maxPuntaje).map(nombre => nombre.value);
+            let mensajeFinal = document.createElement("p");
+            mensajeFinal.className = "mensaje-final";
+            mensajeFinal.textContent = "Juego finalizado! Ganador: " + ganadores.join(", ");
+            document.body.appendChild(mensajeFinal);
+            botonGenerar.disabled = true; 
         }
     });
 
     let selectJugador = document.createElement("select");
+    
     for (let i = 0; i < nombresJugadores.length; i++) {
         let opcion = document.createElement("option");
         opcion.value = i; // El valor de la opción es el índice del jugador
-        opcion.textContent = nombresJugadores[i].value; // El texto de la opción es el nombre del jugador
+        opcion.textContent = nombresJugadores[i].value; 
         selectJugador.appendChild(opcion);
+
     }
     document.body.appendChild(selectJugador);
 
     selectJugador.addEventListener("change", function() {
-        // Obtiene el índice del jugador seleccionado
+        
         indiceJugador = selectJugador.value;
 
-        // Muestra el cartón del jugador seleccionado
+
         mostrarCartonJugador(indiceJugador);
     });
 }
+
 
 // Evento de inicio del juego
 BotonInicio.addEventListener("click", function() {
