@@ -95,9 +95,9 @@ footer {
 
 
 .nombre-jugador {
-    font-size: 24px; /* Cambia el tamaño de la fuente a 24px */
-    font-weight: bold; /* Hace que el texto sea negrita */
-    color: #e99e75; /* Cambia el color del texto a rojo */
+    font-size: 24px; 
+    font-weight: bold; 
+    color: #e99e75; 
     text-align: center;
 }
   
@@ -152,12 +152,6 @@ footer {
     font-weight: bold;
     text-align: center;
 }
-
-/* .contenedor {
-    display: flex;
-    justify-content: center;
-} */
-
 
 button  {
     border-radius: 4px;
